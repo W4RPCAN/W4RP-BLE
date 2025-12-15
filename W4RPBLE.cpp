@@ -1054,15 +1054,12 @@ void W4RPBLE::deepResetBle() {
     impl_->advertising->stop();
   }
 
-  // Cleanup to prevent memory leak
-  if (impl_->server) {
-    delete impl_->server;
-    impl_->server = nullptr;
-    impl_->rx_char = nullptr;
-    impl_->tx_char = nullptr;
-    impl_->status_char = nullptr;
-    impl_->advertising = nullptr;
-  }
+  // Cleanup pointers (BLEDevice::deinit handles memory)
+  impl_->server = nullptr;
+  impl_->rx_char = nullptr;
+  impl_->tx_char = nullptr;
+  impl_->status_char = nullptr;
+  impl_->advertising = nullptr;
 
   delay(200);
 
