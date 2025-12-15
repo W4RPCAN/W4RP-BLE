@@ -1,0 +1,42 @@
+#######################################
+# Syntax Coloring Map for W4RPBLE
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+W4RPBLE	KEYWORD1
+CapabilityMeta	KEYWORD1
+CapabilityParamMeta	KEYWORD1
+ParamMap	KEYWORD1
+CanMode	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+loop	KEYWORD2
+getModuleId	KEYWORD2
+getFwVersion	KEYWORD2
+setModuleHardware	KEYWORD2
+setModuleFirmware	KEYWORD2
+setModuleSerial	KEYWORD2
+setModuleIdOverride	KEYWORD2
+setBleName	KEYWORD2
+setPins	KEYWORD2
+setCanTiming	KEYWORD2
+setCanMode	KEYWORD2
+registerCapability	KEYWORD2
+nvsWrite	KEYWORD2
+nvsRead	KEYWORD2
+applyRuleset	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+NORMAL	LITERAL1
+LISTEN_ONLY	LITERAL1
+NO_ACK	LITERAL1
