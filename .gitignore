@@ -4,10 +4,6 @@ firmware.md
 readme-*.md
 
 # Deprecated legacy files
-W4RPBLE.cpp
-W4RPBLE.h
-W4RPWBP.cpp
-W4RPWBP.h
 /test
-/test/*
 /deprecated
+W4RP-BLE.ino
