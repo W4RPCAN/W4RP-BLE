@@ -256,6 +256,19 @@ void Controller::handleCommand(const uint8_t *data, size_t len) {
       }
       return;
     }
+
+    // OTA:CANCEL - abort ongoing OTA update
+    if (packet == "OTA:CANCEL") {
+      if (streamType_ == OTA_FULL || streamType_ == OTA_DELTA) {
+        otaService_->abort();
+        streamType_ = NONE;
+        streamBuffer_.clear();
+        canBus_->resume();
+        transport_->send("OTA:CANCELLED");
+        Serial.printf("[%s] OTA cancelled by user\n", TAG);
+      }
+      return;
+    }
   }
 }
 
@@ -335,6 +348,11 @@ void Controller::finalizeStream() {
     String defs((char *)streamBuffer_.data(), streamBuffer_.size());
     size_t count = engine_.loadDebugSignals(defs);
     Serial.printf("[%s] Loaded %d debug signals\n", TAG, count);
+
+    // Send acknowledgment
+    char response[32];
+    snprintf(response, sizeof(response), "DEBUG:OK:%d", (int)count);
+    transport_->send(response);
   } else if (streamType_ == RULESET_RAM || streamType_ == RULESET_NVS) {
     if (engine_.loadRuleset(streamBuffer_.data(), streamBuffer_.size())) {
       // All validations passed, accept ruleset
