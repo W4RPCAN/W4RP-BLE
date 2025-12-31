@@ -112,6 +112,8 @@ struct WBPActionParam {
 };
 
 struct WBPRule {
+  uint16_t flowIdStrIdx; // String table index for flow ID (for diagram
+                         // reconstruction)
   uint32_t conditionMask;
   uint8_t actionStartIdx;
   uint8_t actionCount;
